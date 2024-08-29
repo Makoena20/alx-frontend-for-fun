@@ -1,0 +1,19 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Section HERO section */
+.section-hero .section-inner {
+    display: flex;              /* Set display to flex */
+    flex-direction: column;     /* Arrange items in a column */
+    align-items: flex-start;    /* Align items to the start of the cross axis */
+    justify-content: center;    /* Center items along the main axis */
+    min-height: 50vh;           /* Set minimum height to 50% of viewport height */
+    
+    /* Removed padding as per the task instructions */
+}
+
+/* Other styles */
+/* Continue with other styles */
+

@@ -1,0 +1,42 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Section styles */
+.section-services {
+    /* Add your styles here */
+}
+
+.section-works {
+    /* Add your styles here */
+}
+
+.section-about-us {
+    /* Add your styles here */
+}
+
+.section-latest-news {
+    /* Section Latest news ============================= */
+    display: flex;
+}
+
+.section-latest-news .row {
+    flex-direction: row-reverse;
+}
+
+.section-testimonial {
+    /* Add your styles here */
+}
+
+.section-contact {
+    /* Add your styles here */
+}
+
+/* Continue with other styles */
+

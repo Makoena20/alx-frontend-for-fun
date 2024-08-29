@@ -1,0 +1,32 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Section HERO section */
+.hero-homepage {
+    /* Move all declarations from section-hero here */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+/* Updated section-hero styles */
+.section-hero {
+    position: relative;         /* Added position */
+    margin-top: -8.5rem;       /* Added margin-top */
+}
+
+.section-hero .section-body {
+    padding: 10rem 4rem;       /* Added padding */
+}
+
+.section-hero .section-category {
+    color: var(--color-white); /* Added color property pointing to a variable */
+    text-transform: uppercase; /* Added text-transform property */
+}
+
+/* Continue with other styles */
+

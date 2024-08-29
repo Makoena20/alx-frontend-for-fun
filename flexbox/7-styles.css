@@ -1,0 +1,15 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header section */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Added to center items vertically */
+}
+
+/* Other styles */
+/* Continue with other styles */
+

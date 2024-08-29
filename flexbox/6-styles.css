@@ -1,0 +1,27 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar section */
+nav {
+    display: flex;
+}
+
+.nav .nav-item {
+    /* Removed display declaration */
+    /* Other styles */
+}
+
+.nav .nav-item + .nav-item {
+    margin: 0 0 0 2rem; /* Moved margin declaration here */
+}
+
+/* Variables section */
+:root {
+    /* Other variables */
+    --nav-item-margin: 0 0 0 2rem; /* Changed value of nav-item-margin */
+}
+
+/* Continue with other styles */
+

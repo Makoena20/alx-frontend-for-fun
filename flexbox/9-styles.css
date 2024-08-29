@@ -1,0 +1,17 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Section SERVICES section */
+.section-services {
+    /* Existing styles */
+}
+
+/* Section ABOUT US section */
+.section-about-us [class^='col-'] {
+    align-self: center; /* Center-align items within their flex container */
+}
+
+/* Continue with other styles */
+

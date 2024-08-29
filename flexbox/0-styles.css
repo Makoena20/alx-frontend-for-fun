@@ -1,0 +1,33 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Grid section */
+.row {
+    display: flex;
+}
+
+[class*='col-'] {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Specific column widths */
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.col-3 {
+    flex: 3;
+}
+

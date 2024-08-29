@@ -1,0 +1,26 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header section */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Removed styles for header-logo and header-logo a */
+/* Removed styles for navbar-menu */
+
+/* Variables section - remove the following lines */
+:root {
+    /* Other variables */
+    /* header-logo-position */
+    /* header-logo-link-display */
+    /* header-logo-link-position */
+    /* header-logo-link-top */
+    /* header-logo-link-left */
+}
+
+/* Continue with other styles */
+
