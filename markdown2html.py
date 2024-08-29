@@ -1,41 +1,79 @@
 #!/usr/bin/python3
 """
-markdown2html.py module
-
-This script converts a Markdown file to HTML.
+Markdown2HTML script that converts a markdown file to an HTML file.
 """
-
 import sys
 import os
+import hashlib
 
-def main():
-    # Check if the number of arguments is less than 2
+def convert_md_to_html(markdown_content):
+    """Converts markdown content to HTML."""
+    html_content = []
+    in_list = False
+    for line in markdown_content:
+        line = line.rstrip()
+
+        if line.startswith('#'):
+            level = len(line.split(' ')[0])
+            html_content.append(f"<h{level}>{line[level+1:].strip()}</h{level}>")
+
+        elif line.startswith('- '):
+            if not in_list:
+                html_content.append("<ul>")
+                in_list = True
+            html_content.append(f"    <li>{line[2:].strip()}</li>")
+
+        elif line.startswith('* '):
+            if not in_list:
+                html_content.append("<ol>")
+                in_list = True
+            html_content.append(f"    <li>{line[2:].strip()}</li>")
+
+        elif line == "":
+            if in_list:
+                if line.startswith('- '):
+                    html_content.append("</ul>")
+                elif line.startswith('* '):
+                    html_content.append("</ol>")
+                in_list = False
+            html_content.append("</p><p>")
+
+        else:
+            line = line.replace('**', '<b>').replace('__', '<em>')
+            line = line.replace('[[', '').replace(']]', lambda x: hashlib.md5(x.encode()).hexdigest())
+            line = line.replace('((', '').replace('))', lambda x: x.replace('c', '').replace('C', ''))
+            if not in_list:
+                html_content.append(f"<p>{line}</p>")
+            else:
+                html_content.append(line)
+    
+    if in_list:
+        if line.startswith('- '):
+            html_content.append("</ul>")
+        elif line.startswith('* '):
+            html_content.append("</ol>")
+            
+    return "\n".join(html_content)
+
+if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
         sys.exit(1)
 
-    markdown_file = sys.argv[1]
-    output_file = sys.argv[2]
+    markdown_filename = sys.argv[1]
+    html_filename = sys.argv[2]
 
-    # Check if the Markdown file exists
-    if not os.path.exists(markdown_file):
-        print(f"Missing {markdown_file}", file=sys.stderr)
+    if not os.path.exists(markdown_filename):
+        print(f"Missing {markdown_filename}", file=sys.stderr)
         sys.exit(1)
 
-    # Read the Markdown file
-    with open(markdown_file, 'r') as md_file:
-        markdown_content = md_file.read()
+    with open(markdown_filename, 'r') as md_file:
+        markdown_content = md_file.readlines()
 
-    # Convert Markdown to HTML (Basic implementation)
-    html_content = markdown_content  # For now, just copying the content
+    html_content = convert_md_to_html(markdown_content)
 
-    # Write the HTML content to the output file
-    with open(output_file, 'w') as html_file:
+    with open(html_filename, 'w') as html_file:
         html_file.write(html_content)
 
-    # Exit with status 0 if successful
     sys.exit(0)
-
-if __name__ == "__main__":
-    main()
 
