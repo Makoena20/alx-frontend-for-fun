@@ -1,79 +1,71 @@
 #!/usr/bin/python3
 """
-Markdown2HTML script that converts a markdown file to an HTML file.
+markdown2html.py: Converts Markdown text to HTML.
+
+Usage:
+    ./markdown2html.py <input_file> <output_file>
+
+This script reads a Markdown file, converts it to HTML, and writes the result
+to an output file.
 """
+
 import sys
 import os
-import hashlib
+import re
 
-def convert_md_to_html(markdown_content):
-    """Converts markdown content to HTML."""
-    html_content = []
-    in_list = False
-    for line in markdown_content:
-        line = line.rstrip()
+def markdown_to_html(markdown_text):
+    """
+    Converts Markdown to HTML.
+    Handles headers, bold, italics, and special cases.
+    """
+    # Convert headers
+    markdown_text = re.sub(r'###### (.*)', r'<h6>\1</h6>', markdown_text)
+    markdown_text = re.sub(r'##### (.*)', r'<h5>\1</h5>', markdown_text)
+    markdown_text = re.sub(r'#### (.*)', r'<h4>\1</h4>', markdown_text)
+    markdown_text = re.sub(r'### (.*)', r'<h3>\1</h3>', markdown_text)
+    markdown_text = re.sub(r'## (.*)', r'<h2>\1</h2>', markdown_text)
+    markdown_text = re.sub(r'# (.*)', r'<h1>\1</h1>', markdown_text)
 
-        if line.startswith('#'):
-            level = len(line.split(' ')[0])
-            html_content.append(f"<h{level}>{line[level+1:].strip()}</h{level}>")
+    # Convert bold
+    markdown_text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', markdown_text)
+    markdown_text = re.sub(r'__(.+?)__', r'<b>\1</b>', markdown_text)
 
-        elif line.startswith('- '):
-            if not in_list:
-                html_content.append("<ul>")
-                in_list = True
-            html_content.append(f"    <li>{line[2:].strip()}</li>")
+    # Convert italics
+    markdown_text = re.sub(r'\*(.+?)\*', r'<i>\1</i>', markdown_text)
+    markdown_text = re.sub(r'_(.+?)_', r'<i>\1</i>', markdown_text)
 
-        elif line.startswith('* '):
-            if not in_list:
-                html_content.append("<ol>")
-                in_list = True
-            html_content.append(f"    <li>{line[2:].strip()}</li>")
+    # Handle special cases
+    markdown_text = re.sub(r'\[\[(.+?)\]\]', r'<b>\1</b>', markdown_text)
+    markdown_text = re.sub(r'\(\((.+?)\)\)', r'<i>\1</i>', markdown_text)
 
-        elif line == "":
-            if in_list:
-                if line.startswith('- '):
-                    html_content.append("</ul>")
-                elif line.startswith('* '):
-                    html_content.append("</ol>")
-                in_list = False
-            html_content.append("</p><p>")
-
-        else:
-            line = line.replace('**', '<b>').replace('__', '<em>')
-            line = line.replace('[[', '').replace(']]', lambda x: hashlib.md5(x.encode()).hexdigest())
-            line = line.replace('((', '').replace('))', lambda x: x.replace('c', '').replace('C', ''))
-            if not in_list:
-                html_content.append(f"<p>{line}</p>")
-            else:
-                html_content.append(line)
-    
-    if in_list:
-        if line.startswith('- '):
-            html_content.append("</ul>")
-        elif line.startswith('* '):
-            html_content.append("</ol>")
-            
-    return "\n".join(html_content)
+    return markdown_text
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: ./markdown2html.py README.md README.html", file=sys.stderr)
+        print("Usage: ./markdown2html.py <input_file> <output_file>")
         sys.exit(1)
 
-    markdown_filename = sys.argv[1]
-    html_filename = sys.argv[2]
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
 
-    if not os.path.exists(markdown_filename):
-        print(f"Missing {markdown_filename}", file=sys.stderr)
+    # Check if input file exists
+    if not os.path.isfile(input_file):
+        print(f"Missing {input_file}")
         sys.exit(1)
 
-    with open(markdown_filename, 'r') as md_file:
-        markdown_content = md_file.readlines()
+    try:
+        # Read the input markdown file
+        with open(input_file, 'r') as f:
+            markdown_text = f.read()
 
-    html_content = convert_md_to_html(markdown_content)
+        # Convert markdown to HTML
+        html_text = markdown_to_html(markdown_text)
 
-    with open(html_filename, 'w') as html_file:
-        html_file.write(html_content)
+        # Write the HTML to the output file
+        with open(output_file, 'w') as f:
+            f.write(html_text)
 
-    sys.exit(0)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
 
