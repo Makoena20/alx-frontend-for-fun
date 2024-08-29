@@ -16,7 +16,7 @@ import re
 def markdown_to_html(markdown_text):
     """
     Converts Markdown to HTML.
-    Handles headers, bold, italics, and special cases.
+    Handles headers, lists, bold, italics, and special cases.
     """
     # Convert headers
     markdown_text = re.sub(r'###### (.*)', r'<h6>\1</h6>', markdown_text)
@@ -25,6 +25,13 @@ def markdown_to_html(markdown_text):
     markdown_text = re.sub(r'### (.*)', r'<h3>\1</h3>', markdown_text)
     markdown_text = re.sub(r'## (.*)', r'<h2>\1</h2>', markdown_text)
     markdown_text = re.sub(r'# (.*)', r'<h1>\1</h1>', markdown_text)
+
+    # Convert lists
+    markdown_text = re.sub(r'(?m)^\* (.*)', r'<ul>\n<li>\1</li>\n</ul>', markdown_text)
+    markdown_text = re.sub(r'(?m)^- (.*)', r'<ul>\n<li>\1</li>\n</ul>', markdown_text)
+
+    # Merge consecutive lists
+    markdown_text = re.sub(r'</ul>\n<ul>', '', markdown_text)
 
     # Convert bold
     markdown_text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', markdown_text)
