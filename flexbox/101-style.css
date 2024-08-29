@@ -1,0 +1,43 @@
+/* Container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh; /* Full viewport height to fit all boxes */
+    align-items: stretch; /* Ensure all boxes stretch to the same height */
+}
+
+/* Box styling */
+.box {
+    flex: 1 1 20%; /* Flex-grow: 1, flex-shrink: 1, flex-basis: 20% */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    height: 20%; /* Height of each box relative to the container's height */
+    box-sizing: border-box; /* Ensure padding and border are included in the width/height */
+    border: 1px solid #000; /* Optional border to visualize the boxes */
+    color: white; /* Text color */
+    font-size: 1.5rem; /* Font size for text */
+}
+
+/* Custom colors */
+.box1 {
+    background-color: #ff5733; /* Example color */
+}
+
+.box2 {
+    background-color: #33ff57; /* Example color */
+}
+
+.box3 {
+    background-color: #3357ff; /* Example color */
+}
+
+.box4 {
+    background-color: #f4c542; /* Example color */
+}
+
+.box5 {
+    background-color: #c542f4; /* Example color */
+}
+
