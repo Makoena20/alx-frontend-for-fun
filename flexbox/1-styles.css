@@ -8,28 +8,37 @@ body {
     margin: 0 auto;
 }
 
-/* Section styles */
-.section-services {
-    /* Add your styles here */
+/* Grid section */
+.row {
+    display: flex;
 }
 
-.section-works {
-    /* Add your styles here */
+[class*='col-'] {
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
-.section-about-us {
-    /* Add your styles here */
+/* Specific column widths */
+.col-1 {
+    flex: 1;
 }
 
-.section-latest-news {
-    /* Add your styles here */
+.col-2 {
+    flex: 2;
 }
 
-.section-testimonial {
-    /* Add your styles here */
+.col-3 {
+    flex: 3;
 }
 
+/* Section-specific styles */
+.section-services,
+.section-works,
+.section-about-us,
+.section-latest-news,
+.section-testimonial,
 .section-contact {
-    /* Add your styles here */
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
