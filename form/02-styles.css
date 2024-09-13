@@ -1,0 +1,33 @@
+/* Styling for all fieldset elements */
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 0;
+    padding: 0 0 2rem;
+}
+
+/* Additional styles */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.col-1-2 {
+    width: 50%;
+}
+
+.col-2-3 {
+    width: 66.67%;
+}
+
