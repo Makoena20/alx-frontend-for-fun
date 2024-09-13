@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="03-styles.css">
+    <title>Comment Section</title>
+</head>
+<body>
+    <section class="comments">
+        <h2>Leave a Comment</h2>
+        <form action="#" method="post">
+            <!-- First fieldset: Personal Information -->
+            <fieldset>
+                <legend class="visually-hidden">Your personal information</legend>
+                
+                <div class="form-group col-1-2">
+                    <label for="your-first-name">First Name</label>
+                    <div class="form-field">
+                        <span class="form-field-container">
+                            <input type="text" id="your-first-name" name="first-name" required>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group col-1-2">
+                    <label for="your-last-name">Last Name</label>
+                    <div class="form-field">
+                        <span class="form-field-container">
+                            <input type="text" id="your-last-name" name="last-name" required>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group col-2-3">
+                    <label for="your-email">Email</label>
+                    <div class="form-field">
+                        <span class="form-field-container">
+                            <input type="email" id="your-email" name="email" required>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Second fieldset: Comment -->
+            <fieldset>
+                <legend class="visually-hidden">Your comment</legend>
+                
+                <div class="form-group col-2-3">
+                    <label for="your-title">Title</label>
+                    <div class="form-field">
+                        <span class="form-field-container">
+                            <input type="text" id="your-title" name="title" required>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group col-2-3">
+                    <label for="your-comment">Comment</label>
+                    <div class="form-field">
+                        <span class="form-field-container">
+                            <textarea id="your-comment" name="comment" rows="4" required></textarea>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="button button-primary">Post my comment</button>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+/* Styling for all fieldset elements */
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 0;
+    padding: 0 0 2rem;
+}
+
+/* Visually hidden class for accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Column classes */
+.col-1-2 {
+    width: 50%;
+}
+
+.col-2-3 {
+    width: 66.67%;
+}
+
+/* Styling for form labels */
+label {
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    font-size: 1.4rem;
+    padding: 0 0 .5rem;
+}
+
+/* Styling for buttons */
+.button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.button-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.button-primary:hover {
+    background-color: #0056b3;
+}
+
