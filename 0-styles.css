@@ -1,0 +1,42 @@
+/* Style for the <ul> list */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for the list items */
+ul li {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    padding: 10px 0;
+    position: relative;
+}
+
+/* Base class for the icons */
+.icon {
+    display: inline-block;
+    width: 40px;  /* Set the width of the icon */
+    height: 40px; /* Set the height of the icon */
+    background-image: url("0-sprite.png"); /* Reference the sprite image */
+    background-size: auto; /* Ensure the whole sprite image is used */
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* Specific class for HTML icon */
+.i-html {
+    background-position: 0 0; /* Position for HTML icon */
+}
+
+/* Specific class for CSS icon */
+.i-css {
+    background-position: -40px 0; /* Position for CSS icon */
+}
+
+/* Specific class for JavaScript icon */
+.i-js {
+    background-position: -80px 0; /* Position for JavaScript icon */
+}
+

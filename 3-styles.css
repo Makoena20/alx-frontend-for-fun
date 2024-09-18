@@ -1,0 +1,117 @@
+/* Base styles for the navigation menu */
+.menu {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 100px auto;
+}
+
+/* Hide the checkbox input */
+.menu-open {
+    display: none;
+}
+
+/* Style for the main button that opens the menu */
+.menu-open-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #3F51B5;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the lines inside the menu button */
+.menu-line {
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    left: 20px;
+    transition: all 0.3s ease;
+}
+
+.menu-line-1 {
+    top: 22px;
+}
+
+.menu-line-2 {
+    top: 32px;
+}
+
+.menu-line-3 {
+    top: 42px;
+}
+
+/* Style for the menu items (hidden by default) */
+.menu-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FF4081;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Positioning of each menu item when expanded */
+.menu-item:nth-child(3) {
+    top: -80px;
+    left: 10px;
+}
+
+.menu-item:nth-child(4) {
+    top: -40px;
+    left: -60px;
+}
+
+.menu-item:nth-child(5) {
+    top: 40px;
+    left: -60px;
+}
+
+.menu-item:nth-child(6) {
+    top: 80px;
+    left: 10px;
+}
+
+.menu-item:nth-child(7) {
+    top: 40px;
+    left: 80px;
+}
+
+/* When the menu is opened, scale up the items */
+.menu-open:checked + .menu-open-button + .menu-item {
+    transform: scale(1);
+}
+
+/* Rotate the button lines into an 'X' when menu is opened */
+.menu-open:checked + .menu-open-button .menu-line-1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-open:checked + .menu-open-button .menu-line-2 {
+    opacity: 0;
+}
+
+.menu-open:checked + .menu-open-button .menu-line-3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Hover effects for the menu items */
+.menu-item:hover {
+    background-color: #E91E63;
+}
+

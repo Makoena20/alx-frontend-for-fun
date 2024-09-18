@@ -1,0 +1,30 @@
+/* Style for the h2 element */
+h2 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+/* Style for the anchor tag */
+h2 a {
+    text-decoration: none;  /* Remove the underline by default */
+    position: relative;  /* For positioning the pseudo-element */
+    color: #000;  /* Optional: Change the color of the link */
+}
+
+/* Pseudo-element to create the underline effect */
+h2 a::after {
+    content: '';  /* Required for the pseudo-element */
+    position: absolute;
+    width: 0;  /* Start with a hidden underline */
+    height: 2px;
+    background-color: #000;  /* The color of the underline */
+    bottom: 0;
+    left: 0;
+    transition: width 0.5s ease;  /* Slow transition for the underline */
+}
+
+/* Hover effect: the underline grows from 0 to 100% */
+h2 a:hover::after {
+    width: 100%;  /* Expand the underline when hovered */
+}
+
